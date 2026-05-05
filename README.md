@@ -29,9 +29,6 @@ make
 Para simular con QEMU:
 
 ```bash
-# 1. Organizar el binario
-mkdir -p EFI/BOOT
-cp helloworld.efi EFI/BOOT/BOOTX64.EFI
-
-# 2. Iniciar QEMU
-qemu-system-x86_64 -m 512 -bios /usr/share/ovmf/OVMF.fd -drive file=fat:rw:.,format=raw -net none
+qemu-system-x86_64 -m 512 -bios /usr/share/ovmf/OVMF.fd -net none -drive format=raw,file=fat:rw:. -s -S
+Shell> FS0:
+FS0:\> helloworld.efi
