@@ -24,3 +24,14 @@ Para la construcción y emulación del proyecto en distribuciones basadas en Arc
 Para compilar el código fuente y generar el binario ejecutable con formato EFI:
 ```bash
 make
+```
+### 2. Ejecución y Emulación
+Para simular con QEMU:
+
+```bash
+# 1. Organizar el binario
+mkdir -p EFI/BOOT
+cp helloworld.efi EFI/BOOT/BOOTX64.EFI
+
+# 2. Iniciar QEMU
+qemu-system-x86_64 -m 512 -bios /usr/share/ovmf/OVMF.fd -drive file=fat:rw:.,format=raw -net none
